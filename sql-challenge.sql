@@ -1,0 +1,21 @@
+USE PROBLEMS;
+-- What is the total amount each customer spent at the restaurant?
+SELECT * FROM SALES;
+SELECT * FROM MEMBERS;
+SELECT * FROM MENU;
+
+SELECT S.CUSTOMER_ID,SUM(M.PRICE) AS MONEY_SPENT
+FROM SALES S LEFT JOIN MENU M ON S.PRODUCT_ID=M.PRODUCT_ID GROUP BY S.CUSTOMER_ID;
+/*
+A	76
+B	74
+C	36
+*/
+
+-- How many days has each customer visited the restaurant?
+SELECT S.CUSTOMER_ID,COUNT(S.CUSTOMER_ID) AS FREQ FROM SALES S GROUP BY S.CUSTOMER_ID;
+/*
+A	6
+B	6
+C	3
+*/
